@@ -15,14 +15,20 @@ import org.springframework.stereotype.Controller;
 public class WebApplication
 {
 	
+	/**
+	 * Bean responsavel por criar o filtro de requisicoes que serao feitas a API
+	 * Todas as URLs comecando com 'api/' serão filtradas
+	 * 
+	 * @return FilterRegistrationBean
+	 */
 	@Bean
 	public FilterRegistrationBean getFilter() {
-		FilterRegistrationBean FilterRegistrationBean = new FilterRegistrationBean();
-		FilterRegistrationBean.setFilter(new RequestFilter());
-		FilterRegistrationBean.addUrlPatterns("/api/*");
-		FilterRegistrationBean.setOrder(1);
+		FilterRegistrationBean filterRegistrationBean = new FilterRegistrationBean();
+		filterRegistrationBean.setFilter(new RequestFilter());
+		filterRegistrationBean.addUrlPatterns("/api/*");
+		filterRegistrationBean.setOrder(1);
 		
-		return FilterRegistrationBean;
+		return filterRegistrationBean;
 	}
 
    public static void main(String[] args)

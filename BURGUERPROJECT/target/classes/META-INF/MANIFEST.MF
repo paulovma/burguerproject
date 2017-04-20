@@ -1,7 +1,7 @@
 Manifest-Version: 1.0
 Implementation-Title: burguerproject
 Implementation-Version: 1.0.0-SNAPSHOT
-Built-By: Paulo
+Built-By: paulo.amaral
 Implementation-Vendor-Id: br.com.entelgy
 Build-Jdk: 1.8.0_101
 Created-By: Maven Integration for Eclipse

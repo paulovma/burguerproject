@@ -9,12 +9,18 @@ import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 
+import org.springframework.boot.autoconfigure.security.oauth2.resource.JwtAccessTokenConverterConfigurer;
 import org.springframework.web.filter.GenericFilterBean;
 
 import br.com.entelgy.burguerproject.exception.AuthorizeException;
+import io.jsonwebtoken.JwtException;
 
 public class RequestFilter extends GenericFilterBean {
 
+	/**
+	 * 
+	 * 
+	 */
 	@Override
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain filterChain)
 			throws IOException, ServletException {
@@ -23,7 +29,7 @@ public class RequestFilter extends GenericFilterBean {
 		String token = httpRequest.getHeader("Authorization");
 		
 		if (Objects.isNull(token)) {
-			throw new AuthorizeException("Você não tem autorização para essa url.");
+			throw new JwtException("Você não tem autorização para essa url.");
 		}
 		
 		filterChain.doFilter(httpRequest, response);
