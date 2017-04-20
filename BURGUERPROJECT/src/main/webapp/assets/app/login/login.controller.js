@@ -17,7 +17,6 @@
 					$scope.isRotaLogin = false;
 					$state.go('realizarpedido');
 				} else {
-					console.log("YS")
 					$scope.notLogged = true;
 				}
 			});
