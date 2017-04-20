@@ -6,7 +6,7 @@
 			var dados = angular.copy($scope.login);
 			LoginService.logar(dados).then(function(response) {
 				console.log(response);
-				if (response.status == 200) {
+				if (response.status == 200 && response.data) {
 					UserService.setUser(response.data);
 					$scope.isRotaLogin = false;
 					$state.go('realizarpedido');
