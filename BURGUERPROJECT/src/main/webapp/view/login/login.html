@@ -8,22 +8,22 @@
     	<form name="loginForm">
     		<div class="row">
     			<div class="form-group col-md-4">
-	            	<input class="form-control input-lg" placeholder="CPF" type="text" ng-minlength="11" ng-model="usuario.cpf" id="txtCpf" ng-required="true">
+	            	<input class="form-control input-lg" placeholder="LOGIN" type="text" ng-model="login.usuario" id="txtLogin" ng-required="true">
 	       		</div>
     		</div>
     		<div class="row">
     			<div class="form-group col-md-4">
-	            	<input class="form-control input-lg" placeholder="Senha" type="password" ng-model="usuario.senha" id="senha" ng-required="true">
+	            	<input class="form-control input-lg" placeholder="Senha" type="password" ng-model="login.senha" id="senha" ng-required="true">
 	        	</div>
     		</div>
     		<div class="row">
 		        <div class="form-group col-md-4">
-		            <button ng-click="logar()" class="btn btn-primary btn-lg btn-block" type="button">Logar</button>
+		            <button ng-disabled="!loginForm.$valid" ng-click="logar()" class="btn btn-primary btn-lg btn-block" type="button">Logar</button>
 		        </div> 
 	        </div> 
     		<div class="row" ng-show="notLogged">
     			<div class="form-group col-md-4 alert alert-danger text-center">
-    				<p>Usu·rio e/ou senha incorretos!</p>
+    				<p>Usu√°rio e/ou senha incorretos!</p>
     			</div>
     		</div>
         </form>  
