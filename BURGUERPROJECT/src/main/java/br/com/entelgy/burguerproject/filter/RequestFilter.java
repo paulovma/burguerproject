@@ -12,7 +12,6 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.boot.autoconfigure.security.oauth2.resource.JwtAccessTokenConverterConfigurer;
 import org.springframework.web.filter.GenericFilterBean;
 
-import br.com.entelgy.burguerproject.exception.AuthorizeException;
 import io.jsonwebtoken.JwtException;
 
 public class RequestFilter extends GenericFilterBean {
