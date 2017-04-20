@@ -1,3 +1,4 @@
+<meta charset="UTF8" >
 <div class="content">
 	<div class="alert alert-danger" style="text-align: center" ng-show="usuarioIncorreto">
 		<p>Login ou senha incorreto</p>
@@ -20,8 +21,8 @@
 		            <button ng-click="logar()" class="btn btn-primary btn-lg btn-block" type="button">Logar</button>
 		        </div> 
 	        </div> 
-    		<div class="row" ng-show="$scope.notLogged">
-    			<div class="form-group col-md-4 alert-alert-danger">
+    		<div class="row" ng-show="notLogged">
+    			<div class="form-group col-md-4 alert alert-danger text-center">
     				<p>Usuário e/ou senha incorretos!</p>
     			</div>
     		</div>
