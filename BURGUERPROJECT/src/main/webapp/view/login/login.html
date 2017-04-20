@@ -20,6 +20,11 @@
 		            <button ng-click="logar()" class="btn btn-primary btn-lg btn-block" type="button">Logar</button>
 		        </div> 
 	        </div> 
+    		<div class="row" ng-show="$scope.notLogged">
+    			<div class="form-group col-md-4 alert-alert-danger">
+    				<p>Usuário e/ou senha incorretos!</p>
+    			</div>
+    		</div>
         </form>  
     </div> 
 

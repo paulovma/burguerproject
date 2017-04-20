@@ -17,7 +17,7 @@
 					$scope.isRotaLogin = false;
 					$state.go('realizarpedido');
 				} else {
-					console.log("Not permited");
+					$scope.notLogged = true;
 				}
 			});
 		}
