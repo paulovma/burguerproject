@@ -1,14 +1,26 @@
 (function() {
-	var CONTROLLER = ['$scope', 'LoginService', function($scope, LoginService) {
+	var CONTROLLER = ['$scope', 'LoginService', 'UserService', '$state', '$location', function($scope, LoginService, UserService, $state, $location) {
 		console.log('oi');
+		$scope.isRotaLogin = true;
 		var dados = {
 			usuario: "TESTE",
 			senha: "123"
 		}
 
-		LoginService.login(dados).then(function(response) {
-			console.log(response.data);
-		});
+		$scope.logar = function() {
+			console.log("OI");
+			LoginService.logar(dados).then(function(response) {
+				console.log(response);
+				if (response.data) {
+					console.log(response.data.token);
+					UserService.setUser(response.data);
+					$scope.isRotaLogin = false;
+					$state.go('realizarpedido');
+				} else {
+					console.log("Not permited");
+				}
+			});
+		}
 
 	}];
 	

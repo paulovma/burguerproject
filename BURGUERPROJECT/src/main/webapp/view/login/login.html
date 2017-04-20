@@ -1,1 +1,26 @@
-<labe>TESTE</labe>
+<div class="content">
+	<div class="alert alert-danger" style="text-align: center" ng-show="usuarioIncorreto">
+		<p>Login ou senha incorreto</p>
+	</div>
+    <h1 class="text-center">Login</h1>
+    <div class="modal-body" style="left:35%;">
+    	<form name="loginForm">
+    		<div class="row">
+    			<div class="form-group col-md-4">
+	            	<input class="form-control input-lg" placeholder="CPF" type="text" ng-minlength="11" ng-model="usuario.cpf" id="txtCpf" ng-required="true">
+	       		</div>
+    		</div>
+    		<div class="row">
+    			<div class="form-group col-md-4">
+	            	<input class="form-control input-lg" placeholder="Senha" type="password" ng-model="usuario.senha" id="senha" ng-required="true">
+	        	</div>
+    		</div>
+    		<div class="row">
+		        <div class="form-group col-md-4">
+		            <button ng-click="logar()" class="btn btn-primary btn-lg btn-block" type="button">Logar</button>
+		        </div> 
+	        </div> 
+        </form>  
+    </div> 
+
+</div>

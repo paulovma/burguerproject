@@ -1,11 +1,44 @@
 <html ng-app="burguerapp" >
 	<head>
-		<script type="text/javascript" src="/bower_components/angular/angular.min.js"></script>
+		<meta charset="utf-8" />
+		<script type="text/javascript" src="/bower_components/angular/angular.js"></script>
+		<script type="text/javascript" src="/bower_components/a0-angular-storage/dist/angular-storage.min.js"></script>
+		<script type="text/javascript" src="/bower_components/angular-route/angular-route.js"></script>
+		<script type="text/javascript" src="/bower_components/checklist-model/checklist-model.js"></script>
+		<script type="text/javascript" src="/bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
 		<script type="text/javascript" src="/bower_components/jquery/dist/jquery.min.js"></script>
-		<script type="text/javascript" src="/bower_components/bootstrap/dist/css/bootstrap.min.css"></script>
+		<link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.css" />
 		<script type="text/javascript" src="resources/assets/assets.min.js"></script>
 	</head>
-	<body ng-controller="LoginController">
-		<div>OIEEEE</div>
+	<body>
+<!-- 		<div ng-controller="LoginController" > -->
+<!-- 			<div ng-show="isRotaLogin" class="content"> -->
+<!-- 				<div class="alert alert-danger" style="text-align: center" ng-show="usuarioIncorreto"> -->
+<!-- 					<p>Login ou senha incorreto</p> -->
+<!-- 				</div> -->
+<!-- 			    <h1 class="text-center">Login</h1> -->
+<!-- 			    <div class="modal-body" style="left:35%;"> -->
+<!-- 			    	<form name="loginForm"> -->
+<!-- 			    		<div class="row"> -->
+<!-- 			    			<div class="form-group col-md-4"> -->
+<!-- 				            	<input class="form-control input-lg" placeholder="CPF" type="text" ng-minlength="11" ng-model="usuario.cpf" id="txtCpf" ng-required="true"> -->
+<!-- 				       		</div> -->
+<!-- 			    		</div> -->
+<!-- 			    		<div class="row"> -->
+<!-- 			    			<div class="form-group col-md-4"> -->
+<!-- 				            	<input class="form-control input-lg" placeholder="Senha" type="password" ng-model="usuario.senha" id="senha" ng-required="true"> -->
+<!-- 				        	</div> -->
+<!-- 			    		</div> -->
+<!-- 			    		<div class="row"> -->
+<!-- 					        <div class="form-group col-md-4"> -->
+<!-- 					            <button ng-click="logar()" class="btn btn-primary btn-lg btn-block" type="button">Logar</button> -->
+<!-- 					        </div>  -->
+<!-- 				        </div>  -->
+<!-- 			        </form>   -->
+<!-- 			    </div>  -->
+<!-- <!-- 			ng-disabled="!loginForm.$valid" -->
+<!-- 			</div> -->
+<!-- 		</div> -->
+		<div ui-view ></div>
 	</body>
 </html>

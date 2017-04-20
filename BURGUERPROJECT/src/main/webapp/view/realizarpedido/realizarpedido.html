@@ -1,0 +1,154 @@
+<meta charset="utf-8" />
+<div class="jumbotron vertical-center">
+	<div class="row">
+		<div class="col-md-6">
+			<div class="container">
+				<form name="pedidoForm">
+					<div class="row" ng-show="camposObrigatoriosNaoPreenchidos">
+						<div class="col-md-12 alert alert-danger text-center">
+							<p>Os campos: Nome, Endereço e Pedidos são obrigatórios.</p>
+						</div>
+					</div>
+					<div class="row" ng-show="pedidoRealizado">
+						<div class="col-md-12 alert alert-success text-center">
+							<p>Seu pedido foi realizado com sucesso!</p>
+						</div>
+					</div>
+					<div class="row">
+						<div class="form-group col-md-12">
+							<input placeholder="Nome" ng-maxlength="75" ng-model="nomeCliente" class="form-control" type="text" ng-model="cliente.nome" />
+						</div>
+					</div>
+					<div class="row">
+						<div class="form-group col-md-12" >
+							<input placeholder="Endereço" ng-maxlength="100" ng-model="enderecoCliente" class="form-control" type="text" ng-model="cliente.nome" />
+						</div>
+					</div>
+					<div class="row">
+						<div class="form-group col-md-6">
+							<label>Lista de Lanches</label>
+							<select class="form-control" ng-model="lanche" ng-change="setLancheNaTela()" ng-options="item as item.descricao for item in listLanche" >
+<!-- 								<option value="">Selecione...</option> -->
+							</select>
+						</div>
+					</div>
+					<div class="row">
+						<div class="form-group col-md-6">
+							<label>Tipo de Pão</label>
+							<select ng-change="somatorioLanche()" ng-required="true" class="form-control" ng-model="pedido.tipoPao" ng-options="item as item.descricao for item in listTipoPao track by item.id" >
+<!-- 								<option value="">Selecione...</option> -->
+							</select>
+						</div>
+					</div>
+					<div class="row">
+						<div class="form-group col-md-6">
+							<label>Queijo</label>
+							<select ng-change="somatorioLanche()" class="form-control" ng-model="pedido.queijo" ng-options="item as item.descricao for item in listQueijo track by item.id" >
+<!-- 								<option value="">Selecione...</option> -->
+							</select>
+						</div>
+					</div>
+					<div class="row">
+						<div class="form-group col-md-6">
+							<label>Recheio</label>
+							<select class="form-control" ng-change="somatorioLanche()" ng-model="pedido.recheio" ng-options="item as item.descricao for item in listRecheio track by item.id"  >
+<!-- 								<option value="">Selecione...</option> -->
+							</select>
+						</div>
+					</div>
+					<div class="row">
+						<div class="form-group col-md-12">
+							<div class="col-md-1">
+								<label>Saladas</label>
+							</div>
+							<div class="form-group col-md-2" ng-repeat="item in listSalada track by item.id">
+								<input ng-click="checkSalada(item)" ng-required="true" ng-value="item" type="radio" name="salada" ng-checked="item.checked" />{{item.descricao}}
+							</div>
+							<div class="form-group col-md-2">
+								<input ng-change="dobrarSalada()" ng-disabled="!saladaChecked" ng-model="dobraSalada" type="checkbox" /><label>Dobrar</label>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="form-group col-md-12">
+							<div class="col-md-1">
+								<label>Molhos</label>
+							</div>
+							<div class="form-group col-md-2" ng-repeat="item in listMolho track by item.id">
+								<input data-checklist-model="pedido.molhos" ng-checked="item.checked" data-checklist-value="item" type="checkbox" ng-click="checkItem(item, checked)" />{{item.descricao}}
+							</div>
+							<div class="form-group col-md-2">
+								<input ng-change="dobrarMolho()" ng-disabled="pedido.molhos.length == 0" ng-model="dobraMolho" type="checkbox" /><label>Dobrar</label>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="form-group col-md-12">
+							<div class="col-md-1">
+								<label>Temperos</label>
+							</div>
+							<div class="form-group col-md-2" ng-repeat="item in listTempero track by item.id">
+								<input data-checklist-model="pedido.temperos" ng-checked="item.checked" data-checklist-value="item" type="checkbox" ng-click="checkItem(item, checked)"  />{{item.descricao}}
+							</div>
+							<div class="form-group col-md-2">
+								<input ng-change="dobrarTempero()" ng-disabled="pedido.temperos.length == 0" ng-model="dobraTempero" type="checkbox" /><label>Dobrar</label>
+							</div>
+						</div>
+					</div>
+				</form>
+				<div class="row">
+					<div class="form-group col-md-offset-4 col-md-2">
+						<input class="form-control text-center" type="text" ng-disabled="true" ng-value="valorLanche | number: 2" placeholder="Valor do Lanche" />
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="form-group col-md-6">
+			<div class="container" style="border-style: solid; height: 100%; overflow: scroll;">
+				<h2 class="text-center" style="font-style: italic; color: gray" >Pedidos Realizados</h2>
+				<div class="row">
+					<div class="form-group col-md-12 text-right">
+						<label>*   - Item duplicado</label>
+					</div>
+					<div class="form-group col-md-12 text-right">
+						<label>N/S - Não Selecionado</label>
+					</div>
+				</div>
+				<div class="form-group col-md-12" ng-repeat="item in pedidos">
+					<div class="row">
+						<label> {{$index + 1}} - {{item.descricao ? item.descricao : item.tipoPao.descricao}}</label> - <label>R$ {{item.valor | number: 2}}</label>
+						<div class="row">
+							<div class="col-md-12">
+								<label>Tipo de Pão:</label><span> {{item.tipoPao.descricao}}</span>
+								<label>Queijo:</label><span> {{item.queijo.descricao ? item.queijo.descricao : 'N/S'}}</span>
+								<label>Recheio:</label><span> {{item.recheio.descricao ? item.recheio.descricao : 'N/S'}}</span>
+								<label>Salada {{item.dobraSalada ? '*' : ''}}: </label><span> {{item.salada.descricao ? item.salada.descricao : 'N/S'}}</span>
+								<label>Molhos {{item.dobraMolho ? '*' : ''}}: </label>
+								<span ng-repeat="molho in item.molhos"> {{molho.descricao}} </span>
+								<span ng-if="item.molhos.length == 0" >N/S</span>
+								<label>Temperos {{item.dobraTempero ? '*' : ''}}:</label>
+								<span ng-repeat="tempero in item.temperos"> {{tempero.descricao}} - </span>
+								<span ng-if="item.temperos.length == 0" >N/S</span>
+								<div class="row">
+									<button ng-click="retirarPedido(item)" class="btn btn-sm btn-default" >Excluir Pedido</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="form-group col-md-offset-4 col-md-1">
+			<button class="btn btn-block btn-primary" ng-disabled="!pedidoForm.$valid" ng-click="adicionarPedido()" >Salvar</button>
+		</div>
+		<div class="form-group col-md-1">
+			<button class="btn btn-block btn-primary" ng-click="finalizarPedido()" ng-disabled="pedidos.length == 0" >Finalizar</button>
+		</div>
+		<div class="form-group col-md-offset-2 col-md-2 text-right">
+			<input class="form-control text-center" ng-value="valorTotal | number: 2" type="text" placeholder="Valor do Pedido" disabled="disabled" />
+		</div>
+	</div>
+	
+</div>
