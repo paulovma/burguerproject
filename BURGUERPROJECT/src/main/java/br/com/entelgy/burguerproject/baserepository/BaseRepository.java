@@ -11,6 +11,13 @@ public class BaseRepository {
 	@PersistenceContext
 	protected EntityManager entityManager;
 	
+	/**
+	 * Retorna um Objeto da classe 'classe' com ID igual ao 'id'
+	 * 
+	 * @param classe
+	 * @param id
+	 * @return Object
+	 */
 	public Object recuperarPeloId(Class classe, Long id) {
 		return this.entityManager.find(classe, id);
 	}

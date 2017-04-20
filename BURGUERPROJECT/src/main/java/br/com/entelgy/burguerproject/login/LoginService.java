@@ -23,6 +23,13 @@ public class LoginService {
 	@Autowired
 	private LoginRepository loginDAO;
 
+	/**
+	 * Tentativa de autentificar um usuario
+	 * Caso o usuario exista, é criado um TOKEN de Autenticação
+	 * 
+	 * @param loginDto
+	 * @return AuthenticationDTO
+	 */
 	@Transactional
 	public AuthenticationDTO verificaLogin(LoginDTO loginDto) {
 		AuthenticationDTO authenticationDTO = null;
