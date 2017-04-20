@@ -16,6 +16,12 @@ import br.com.entelgy.burguerproject.entity.Lanche;
 @Repository
 public class RealizarPedidoRepository extends BaseRepository {
 	
+	/**
+	 * Retorna Todos os Lanches PADRAO (Que não foram montados pelo Usuario) do Sistema
+	 * 
+	 * 
+	 * @return List<Lanche>
+	 */
 	public List<Lanche> getAllLanches() {
 		StringBuilder hql = new StringBuilder();
 		
@@ -27,6 +33,11 @@ public class RealizarPedidoRepository extends BaseRepository {
 		
 	}
 	
+	/**
+	 * Retorna Todos os Recheios em uma lista de DTO
+	 * 
+	 * @return List<RecheioDTO>
+	 */
 	public List<RecheioDTO> getAllRecheios() {
 		StringBuilder hql = new StringBuilder();
 		
@@ -42,6 +53,11 @@ public class RealizarPedidoRepository extends BaseRepository {
 		return query.getResultList();
 	}
 
+	/**
+	 * Retorna Todos os Tipos de Pao em uma lista de DTO
+	 * 
+	 * @return List<TipoPaoDTO>
+	 */
 	public List<TipoPaoDTO> getAllTiposPao() {
 		StringBuilder hql = new StringBuilder();
 		
@@ -57,6 +73,11 @@ public class RealizarPedidoRepository extends BaseRepository {
 		return query.getResultList();
 	}
 	
+	/**
+	 * Retorna Todos os Queijos em uma Lista de DTO
+	 * 
+	 * @return List<QueijoDTO>
+	 */
 	public List<QueijoDTO> getAllQueijos() {
 		StringBuilder hql = new StringBuilder();
 		
@@ -72,6 +93,11 @@ public class RealizarPedidoRepository extends BaseRepository {
 		return query.getResultList();
 	}
 	
+	/**
+	 * Retorna Todos os Temperos em uma lista de DTO
+	 * 
+	 * @return List<TemperoDTO>
+	 */
 	public List<TemperoDTO> getAllTemperos() {
 		StringBuilder hql = new StringBuilder();
 		
@@ -87,6 +113,11 @@ public class RealizarPedidoRepository extends BaseRepository {
 		return query.getResultList();
 	}
 	
+	/**
+	 * Retorna Todas as Saladas em uma Lista de DTO
+	 * 
+	 * @return List<SaladaDTO>
+	 */
 	public List<SaladaDTO> getAllSaladas() {
 		StringBuilder hql = new StringBuilder();
 		
@@ -102,6 +133,11 @@ public class RealizarPedidoRepository extends BaseRepository {
 		return query.getResultList();
 	}
 	
+	/**
+	 * Retorna Todos os Molhos em uma lista de DTO
+	 * 
+	 * @return List<MolhoDTO>
+	 */
 	public List<MolhoDTO> getAllMolhos() {
 		StringBuilder hql = new StringBuilder();
 		
